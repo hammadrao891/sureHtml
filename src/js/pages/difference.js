@@ -262,7 +262,7 @@ const tabsSection = () => {
 
                         tl.play();
 
-                        activeLottie.lottieAnimation?.goToAndPlay(0);
+                        activeLottie.lottieAnimation.goToAndPlay(0);
 
                         isSwitching = false;
                     }

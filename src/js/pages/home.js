@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     videoModal();
 });
 
-// Carousel 
- const heroCarousel = () => {
+// Carousel
+const heroCarousel = () => {
     Swiper.use([Thumbs]);
 
     const swiperThumbsContainer = document.querySelector('.swiper-carousel-pagination');
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             init: false,
             loop: true,
             autoplay: {
-                delay: 6000,
+                delay: 8000,
                 pauseOnMouseEnter: false,
                 disableOnInteraction: false,
             },

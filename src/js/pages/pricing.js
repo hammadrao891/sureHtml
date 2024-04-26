@@ -26,9 +26,9 @@ const quantityIncrementDecrement = () => {
         let membersQuantity = e.currentTarget.parentNode.parentNode.querySelector('.js-members-quantity');
         let value = parseInt(membersQuantity.value, 10);
         value = isNaN(value) ? 0 : value;
-        value < 10 ? value = 10 : '';
+        value < 11 ? value = 11 : '';
         value--;
-        if (value < 10) {
+        if (value < 11) {
             membersQuantity.parentNode.classList.add('disable-decrement');
         }
         membersQuantity.value = value;
@@ -37,9 +37,9 @@ const quantityIncrementDecrement = () => {
     const checkValue = (membersQuantity) => {
         let value = parseInt(membersQuantity.value, 10);
         value = isNaN(value) ? 0 : value;
-        value < 10 ? value = 10 : '';
+        value < 11 ? value = 11 : '';
         value--;
-        if (value < 10) {
+        if (value < 11) {
             membersQuantity.parentNode.classList.add('disable-decrement');
         }
         membersQuantity.value = value;

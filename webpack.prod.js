@@ -59,8 +59,8 @@ module.exports = merge(common, {
                                 type: 'src',
                             },
                             {
-                                tag: 'poster',
-                                attribute: 'src',
+                                tag: 'video',
+                                attribute: 'poster',
                                 type: 'src',
                             },
                             {

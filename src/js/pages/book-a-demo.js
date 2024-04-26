@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Custom select fields interaction
-export const selectFieldsInteraction = () => {
+const selectFieldsInteraction = () => {
     let selectedOption = null;
 
     const toggleSelect = (element) => {
@@ -55,7 +55,7 @@ export const selectFieldsInteraction = () => {
 };
 
 // Custom select fields
-export const customSelectFields = () => {
+const customSelectFields = () => {
     const fields = document.querySelectorAll('select');
 
     fields.forEach(field => {
