@@ -1,0 +1,166 @@
+// Buttons
+
+.btn {
+  --height: 44px;
+  --paddingY: 10px;
+  --paddingX: 24px;
+
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  height: var(--height);
+  line-height: calc(var(--height) - var(--paddingY) - 2px);
+  font-size: 16px;
+  font-weight: 500;
+  padding: var(--paddingY) var(--paddingX);
+  border: 1px solid transparent;
+  border-radius: var(--height);
+  background: transparent;
+  transition-property: background-color, color, border-color;
+  transition-duration: .15s;
+  transition-timing-function: ease;
+  white-space: nowrap;
+
+  &[disabled],
+  &.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  &-sm {
+    --height: 40px;
+    --paddingX: 20px;
+  }
+
+  &-lg {
+    --height: 54px;
+    --paddingX: 32px;
+    @include mediumScreens {
+      font-size: 18px;
+      letter-spacing: -0.015em;
+    }
+  }
+
+  svg path {
+    fill: currentColor;
+  }
+
+  &-arrow {
+    position: relative;
+  }
+
+  &-arrow > svg path {
+    fill: currentColor;
+  }
+
+  &-link {
+    padding: 0;
+    height: auto;
+    line-height: 1;
+  }
+
+  &-flex {
+    display: flex;
+    padding: var(--paddingY) var(--paddingX);
+    width: 100%;
+  }
+
+  &-block {
+    width: 100%;
+  }
+
+  &-play {
+    width: var(--height);
+    padding: 0 0 0 3px;
+    border-radius: 50%;
+  }
+
+  &-white,
+  &-white:focus {
+    background-color: clr(white);
+    border-color: clr(white);
+    color: clr(primary);
+  }
+
+  &-white:hover,
+  &-white:active:focus {
+    background-color: clr(white);
+    border-color: clr(white);
+    color: clr(primary);
+  }
+
+  &-outline-white,
+  &-outline-white:focus {
+    background-color: transparent;
+    border-color: clr(white);
+    color: clr(white);
+  }
+
+  &-outline-white:hover,
+  &-outline-white:active:focus {
+    background-color: clr(white);
+    border-color: clr(white);
+    color: clr(primary);
+  }
+
+  &-primary,
+  &-primary:focus {
+    background-color: clr(primary);
+    border-color: transparent;
+    color: clr(white);
+  }
+
+  &-primary:hover {
+    background-color: clr(midGray);
+    border-color: transparent;
+    color: clr(white);
+  }
+
+  &-primary:active:focus {
+    background-color: rgba(clr(primary), 0.9);
+    border-color: transparent;
+    color: clr(white);
+  }
+
+  &-blue,
+  &-blue:focus {
+    background-color: clr(blue);
+    border-color: transparent;
+    color: clr(white);
+  }
+
+  &-blue:hover {
+    background-color: clr(darkBlue);
+    border-color: transparent;
+    color: clr(white);
+  }
+
+  &-blue:active:focus {
+    background-color: rgba(clr(blue), 0.8);
+    border-color: transparent;
+    color: clr(white);
+  }
+
+  &-outline-primary {
+    background-color: transparent;
+    border-color: clr(primary);
+    color: clr(primary);
+  }
+
+  &-outline-primary:focus {
+    background-color: transparent;
+    border-color: clr(primary);
+    color: clr(primary);
+    opacity: 0.8;
+  }
+
+  &-outline-primary:hover,
+  &-outline-primary:active:focus {
+    background-color: clr(lightGray);
+    border-color: clr(primary);
+    color: clr(primary);
+  }
+}

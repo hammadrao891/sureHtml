@@ -1,0 +1,249 @@
+@use 'sass:math';
+
+// Strip Units
+
+@function strip-unit($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+// To VW
+
+@function vw($px-vw, $base-vw: 1728px) {
+  @return math.div($px-vw * 100vw, $base-vw);
+}
+
+// To VH
+
+@function vh($px-vh, $base-vh: 906px) {
+  @return math.div($px-vh * 100vh, $base-vh);
+}
+
+// Set colors
+
+@function clr($base) {
+  $color: map-get($colors, $base);
+  @return $color;
+}
+
+// Make 'background-color' classes
+
+@each $name, $color in $colors {
+  .bg-#{"" + $name} {
+    background-color: $color;
+  }
+}
+
+// Make text color classes
+
+@each $name, $color in $colors {
+  .text-#{"" + $name} {
+    color: $color;
+  }
+}
+
+// Fit text to window
+
+@mixin fitText($max-vw, $max-font-size) {
+  & {
+    font-size: calc(#{strip-unit($max-font-size / $max-vw * 100)}vw);
+    @media screen and (min-width: $max-vw) {
+      font-size: $max-font-size;
+    }
+  }
+}
+
+// Fluid Type
+
+@mixin fluidType($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// Media Queries (Mobile First);
+
+@mixin customScreens($value) {
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+@mixin smallScreens() {
+  @media (min-width: $smScreenW) {
+    @content;
+  }
+}
+
+@mixin mediumScreens() {
+  @media (min-width: $mdScreenW) {
+    @content;
+  }
+}
+
+@mixin largeScreens() {
+  @media (min-width: $lgScreenW) {
+    @content;
+  }
+}
+
+@mixin extraLargeScreens() {
+  @media (min-width: $xlScreenW) {
+    @content;
+  }
+}
+
+// The media queries below should only be used in very specific cases where you ONLY want to apply styles on certain screen sizes.
+// You should use the mobile first media queries above whenever possible.
+@mixin mediumScreensOnly() {
+  @media (min-width: $mdScreenW) and (max-width: $lgScreenW - 1px) {
+    @content;
+  }
+}
+
+@mixin extraSmallScreensMax() {
+  @media (max-width: $smScreenW - 1px) {
+    @content;
+  }
+}
+
+@mixin smallScreensMax() {
+  @media (max-width: $mdScreenW - 1px) {
+    @content;
+  }
+}
+
+@mixin mediumScreensMax() {
+  @media (max-width: $lgScreenW - 1px) {
+    @content;
+  }
+}
+
+@mixin largeScreensMax() {
+  @media (max-width: $xlScreenW - 1px) {
+    @content;
+  }
+}
+
+@mixin smallMediumScreens() {
+  @media (min-width: #{$mdScreenW + ($smScreenW / 2)}) {
+    @content;
+  }
+}
+
+@mixin smallMediumScreensMax() {
+  @media (max-width: #{$mdScreenW + ($smScreenW / 2)} - 1px) {
+    @content;
+  }
+}
+
+// Fluid Fonts Mixins
+
+@mixin fontHeading1 {
+  @include fluidType($mdScreenW, $xlScreenW, 64px, 88px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+@mixin fontHeading2 {
+  @include fluidType($mdScreenW, $xlScreenW, 40px, 78px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+@mixin fontHeading3 {
+  @include fluidType($mdScreenW, $xlScreenW, 32px, 64px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+@mixin fontHeading4 {
+  @include fluidType($mdScreenW, $xlScreenW, 32px, 48px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@mixin fontHeading5 {
+  @include fluidType($mdScreenW, $xlScreenW, 24px, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@mixin fontHeading6 {
+  @include fluidType($mdScreenW, $xlScreenW, 20px, 24px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@mixin fontBodyXXL {
+  @include fluidType($mdScreenW, $xlScreenW, 20px, 24px);
+  line-height: 1.2;
+}
+
+@mixin fontBodyXL {
+  @include fluidType($mdScreenW, $xlScreenW, 18px, 20px);
+  line-height: 1.2;
+}
+
+@mixin fontBodyLG {
+  @include fluidType($mdScreenW, $xlScreenW, 16px, 18px);
+  line-height: 1.5;
+}
+
+@mixin fontBodySM {
+  @include fluidType($mdScreenW, $xlScreenW, 14px, 14px);
+  line-height: 1.5;
+}
+
+@mixin fontBodyXS {
+  @include fluidType($mdScreenW, $xlScreenW, 13px, 13px);
+  line-height: 1.53;
+}
+
+@mixin fontBody {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@mixin pretitle {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.33em;
+  color: rgba(clr(primary), 0.5);
+  @include mediumScreens {
+    font-size: 24px;
+  }
+}
+
+@each $infix, $size in $grid-breakpoints {
+  @media (min-width: $size) {
+    .order-#{$infix}-first {
+      order: -1;
+    }
+
+    .order-#{$infix}-last {
+      order: 99;
+    }
+  }
+}

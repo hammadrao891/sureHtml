@@ -1,0 +1,244 @@
+@import '../variables/variables';
+@import '../mixins/vivid';
+
+.shared-hero {
+  padding: calc(50px + var(--navbarH)) 0 50px;
+  @include mediumScreens {
+    padding: calc(100px + var(--navbarH)) 0 100px;
+  }
+
+  .line-draw {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    transform: translate(0, -50%);
+    @include mediumScreens {
+      top: 85%;
+    }
+  }
+
+  .line-draw svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .highlight {
+    display: inline-block;
+    position: relative;
+  }
+
+  .highlight svg {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    width: 100%;
+    @include mediumScreens {
+      top: 64%;
+    }
+  }
+
+  > .decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: calc(var(--sectionPaddingY) * -1);
+    pointer-events: none;
+  }
+
+  > .decor img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+  }
+
+  .hero-content .heading {
+    @include fontHeading2;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+    @include mediumScreens {
+      font-weight: 700;
+    }
+  }
+
+  .hero-content .paragraph {
+    @include fontBodyXXL;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    max-width: 540px;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(clr(primary), 0.8);
+    @include smallScreensMax {
+      font-size: 18px;
+    }
+  }
+
+  .buttons {
+    margin-top: 56px;
+  }
+}
+
+.section-privacy {
+  > .decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  > .decor img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.container-narrow {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rich-text-block {
+  h3 {
+    @include fontHeading4;
+    font-weight: 600;
+    margin-bottom: 32px;
+    margin-top: 80px;
+    @include mediumScreens {
+      margin-top: 120px;
+    }
+  }
+
+  h5 {
+    @include fontHeading5;
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+
+  p {
+    @include fontBodyXL;
+    line-height: 1.5;
+    color: rgba(clr(primary), 0.8);
+    margin-top: 12px;
+  }
+
+  p + h5 {
+    margin-top: 32px;
+  }
+
+  h5 + p + p + h5 {
+    margin-top: 60px;
+    @include mediumScreens {
+      margin-top: 80px;
+    }
+  }
+
+  a:not(.btn) {
+    font-weight: 500;
+  }
+
+  a:not(.btn):hover {
+    text-decoration: underline;
+  }
+
+  .flex-table {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    background: rgba(clr(blue), 0.05);
+    @include mediumScreens {
+      flex-flow: row nowrap;
+    }
+  }
+
+  .flex-table .flex-col {
+    flex: 1;
+  }
+
+  .flex-table .th {
+    @include fontHeading6;
+    width: 100%;
+    letter-spacing: -0.015em;
+    font-weight: 600;
+    padding: 24px;
+    @include mediumScreens {
+      min-height: 4em;
+    }
+  }
+
+  .flex-table .td {
+    width: 100%;
+    padding: 0 24px 24px;
+  }
+
+  .flex-table p {
+    @include fontBodyLG;
+    margin: 0;
+  }
+
+  .flex-table ul {
+    @include fontBodyLG;
+    color: rgba(clr(primary), 0.8);
+    list-style: disc;
+    padding-left: 1.5em;
+  }
+
+  .flex-table ul li + li {
+    margin-top: 2px;
+  }
+
+  ol {
+    @include fontBodyXXL;
+    counter-reset: ol;
+    margin: 32px 0;
+  }
+
+  ol li {
+    position: relative;
+    counter-increment: ol;
+    padding-left: 52px;
+  }
+
+  ol li:before {
+    content: counter(ol);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -0.125em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    border: 1px solid rgba(clr(primary), 1);
+    border-radius: 50%;
+  }
+
+  ol li + li {
+    margin-top: 32px;
+  }
+
+  ol li p {
+    margin-left: -52px;
+    margin-top: 32px;
+  }
+}

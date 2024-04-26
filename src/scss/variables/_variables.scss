@@ -1,0 +1,66 @@
+// Fonts
+
+$fontPrimary: 'Work Sans', sans-serif;
+$fontSecondary: 'Gabarito', sans-serif;
+$fontBaseSize: 16px;
+$fontBaseLineHeight: 1.5;
+
+// Colors
+
+$colors: (
+  primary: #131316,
+  midGray: #717173,
+  lightGray: #EEEEEE,
+  blue: #00A3FF,
+  darkBlue: #2970FF,
+  white: #ffffff,
+);
+
+// Grid
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 500px,
+  md: 768px,
+  lg: 1280px,
+  xl: 1440px
+);
+
+// Utilities
+
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+$overflows: auto, hidden !default;
+$positions: static, relative, absolute, fixed, sticky !default;
+$user-selects: all, auto, none !default;
+
+// Spacing
+
+$spacer: 20px !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 2),
+    5: ($spacer * 3)
+  ),
+  $spacers
+);
+
+// Headings
+
+$fontHeading1: 5rem;
+$fontHeading2: calc($fontHeading1 - ($fontHeading1 * 20 / 100));
+$fontHeading3: calc($fontHeading2 - ($fontHeading2 * 20 / 100));
+$fontHeading4: calc($fontHeading3 - ($fontHeading3 * 20 / 100));
+$fontHeading5: calc($fontHeading4 - ($fontHeading4 * 25 / 100));
+$fontHeading6: calc($fontHeading5 - ($fontHeading5 * 25 / 100));
+
+// Media Queries
+
+$smScreenW: map-get($grid-breakpoints, 'sm');
+$mdScreenW: map-get($grid-breakpoints, 'md');
+$lgScreenW: map-get($grid-breakpoints, 'lg');
+$xlScreenW: map-get($grid-breakpoints, 'xl');

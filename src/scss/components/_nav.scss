@@ -1,0 +1,375 @@
+// Navigation
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2019;
+  transition: background-color .3s ease;
+}
+
+.navbar,
+.navbar-expand-md {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  min-height: var(--navbarH);
+  @include mediumScreens {
+    min-height: var(--navbarH);
+  }
+
+  .container {
+    position: static;
+    justify-content: space-between;
+    @include customScreens(1024px) {
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
+.navbar-scrolled {
+  background-color: clr(white);
+}
+
+.navbar-header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  @include customScreens(1024px) {
+    display: block;
+    width: auto;
+  }
+}
+
+.navbar-nav {
+  display: inline-flex;
+  flex-direction: column;
+  @include customScreens(1024px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 56px;
+    text-align: center;
+  }
+
+  .nav-item {
+
+  }
+
+  .nav-item > .nav-link {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(clr(primary), 0.1);
+    @include customScreens(1024px) {
+      display: inline-flex;
+      font-size: 16px;
+      padding: 0;
+      border-bottom: 0;
+      background-color: transparent;
+      border-bottom: 2px solid transparent;
+      transition: border-color .2s ease;
+    }
+  }
+
+  .nav-item > .nav-link:hover {
+    background-color: transparent;
+    border-bottom: 2px solid rgba(clr(primary), 1);
+  }
+
+  .nav-item > .nav-link:focus {
+    background-color: transparent;
+  }
+}
+
+.navbar-menu-mobile {
+  @include customScreens(1024px) {
+    display: none;
+  }
+}
+
+.navbar-nav-mobile {
+  margin-top: 24px;
+  padding-bottom: 24px;
+
+  .nav-item > .nav-link {
+    position: relative;
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: rgba(clr(primary), 0.8);
+    line-height: 1.33;
+    padding: 10px 0;
+  }
+
+  .nav-item > .nav-link:after {
+    content: '';
+    position: absolute;
+    top: 0.5em;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    transform: rotate(-90deg);
+    background: url('~img/icons/chevron.svg') no-repeat 50% / contain;
+  }
+
+  .nav-item.active > .nav-link:after {
+    transform: none;
+  }
+}
+
+.navbar-nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(clr(primary), 0.1);
+
+  .btn {
+    display: flex;
+    height: 54px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.navbar-nav-social {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.navbar-menu-toggler {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 0;
+  padding: 0 4px;
+  color: clr(primary);
+  z-index: 1000;
+
+  @include customScreens(1024px) {
+    display: none;
+  }
+
+  > span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  > span + span {
+    margin-top: 4px;
+  }
+}
+
+.navbar-brand {
+  height: 24px;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  color: currentColor;
+  z-index: 1000;
+  @include customScreens(1024px) {
+    height: 36px;
+  }
+
+  img,
+  svg {
+    display: block;
+    width: auto;
+    height: 100%;
+  }
+}
+
+.navbar-invert {
+  color: white;
+
+  .navbar-brand svg path {
+    fill: currentColor;
+  }
+
+  .navbar-menu-toggler {
+    color: currentColor;
+  }
+}
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--navbarH) 20px 40px;
+  background: clr(white);
+  @include customScreens(1024px) {
+    display: flex;
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: unset;
+    flex-grow: 1;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    margin-left: auto;
+    margin-right: 40px;
+    @include largeScreens {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.menu-open {
+  display: flex;
+}
+
+.menu-is-open {
+  //overflow: hidden;
+
+  .navbar {
+    color: clr(primary);
+    background: clr(white);
+  }
+
+  .navbar .btn-primary {
+    background: clr(primary);
+    color: clr(white);
+    border-color: clr(primary);
+  }
+
+  .navbar-nav .nav-link[data-toggle="dropdown"]:after,
+  .navbar-nav .nav-link.js-toggle-navigation:after {
+    filter: none;
+  }
+
+  .navbar-menu-toggler > span {
+    transition-delay: 0s;
+  }
+
+  .navbar-menu-toggler > span:nth-of-type(1) {
+    transform: rotate(45deg);
+  }
+
+  .navbar-menu-toggler > span:nth-of-type(2) {
+    transform: rotate(-45deg);
+    margin-top: -2px;
+  }
+
+  .navbar-menu-toggler > span:nth-of-type(3) {
+    display: none;
+  }
+}
+
+.navbar-menu {
+  flex-grow: 0;
+}
+
+.navbar-actions {
+  display: none;
+  text-align: right;
+  @include customScreens(1024px) {
+    display: block;
+  }
+
+  .navbar-nav {
+    gap: 24px;
+  }
+}
+
+.navbar-header,
+.navbar-actions {
+  @include largeScreens {
+    flex: 1;
+  }
+}
+
+.collapse-menu {
+  height: 0;
+  overflow: hidden;
+}
+
+.collapse-menu-list {
+  .collapse-menu-list-link {
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    padding: 8px 0;
+  }
+}
+
+.menu-is-open {
+  .navbar-header .js-language-selector {
+    display: block;
+    @include customScreens(1024px) {
+      display: none;
+    }
+  }
+}
+
+.navbar-header {
+  .js-language-selector {
+    display: none;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  .dropdown-toggler {
+    min-width: 0;
+    padding: 8px 32px 8px 8px;
+  }
+
+  .dropdown-toggler:after {
+    right: 4px;
+  }
+
+  .dropdown-menu {
+    min-width: 236px;
+    padding: 16px;
+    right: 0;
+    left: auto;
+  }
+
+  .dropdown-list .dropdown-list-item {
+    padding: 12px 32px 12px 12px;
+  }
+}
+
+.navbar-menu {
+  > .decor {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    @include customScreens(1024px) {
+      display: none;
+    }
+  }
+
+  > .decor img {
+    width: 100%;
+    height: auto;
+  }
+}

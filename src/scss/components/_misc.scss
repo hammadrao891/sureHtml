@@ -1,0 +1,44 @@
+// Misc
+
+:root {
+  --globalGutter: 16px;
+  --navbarH: 56px;
+  --sectionPaddingY: 80px;
+  @include mediumScreens {
+    --globalGutter: 32px;
+    --navbarH: 96px;
+    --sectionPaddingY: 140px;
+  }
+  @include largeScreens {
+    --globalGutter: 64px;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  padding-right: var(--globalGutter);
+  padding-left: var(--globalGutter);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .container {
+  display: flex;
+}
+
+input:focus,
+button:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 0;
+}
