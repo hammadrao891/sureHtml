@@ -21,6 +21,24 @@
     height: auto;
   }
 
+  .hero-media {
+    position: relative;
+    z-index: 10;
+    margin: calc(var(--sectionPaddingY) * .25) -25% calc(var(--sectionPaddingY) * -.5);
+    @include mediumScreens {
+      margin: calc(var(--sectionPaddingY) * .25) 0 calc(var(--sectionPaddingY) * -.5);
+    }
+  }
+
+  .hero-media .hero-image {
+    max-width: 1312px;
+    margin: 0 auto;
+  }
+
+  .hero-media .hero-image img {
+    max-width: 100%;
+  }
+
   .hero-content {
     position: relative;
     z-index: 3;
